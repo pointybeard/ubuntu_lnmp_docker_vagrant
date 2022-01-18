@@ -1,0 +1,27 @@
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+
+# Better fomatting of the command prompt
+PS1='\[\033[0;35m\]\h\[\033[0;33m\] \w\[\033[00m\]: '
+
+# Basic Conveniences
+alias free="free -m"
+alias ..="cd .."
+alias ...="cd ../.."
+alias h='cd ~'
+alias c='clear'
+alias ls='ls -lah'
+alias usage="du -hsc * | awk 'END {print $1}'"
+
+# This Bash Config
+alias "bashrc.edit"="nano ~/.bashrc"
+alias "bashrc.reload"="source ~/.bashrc"
+
+# Git
+alias git="hub"
+alias gs="git status -s";
+alias gd="git diff";
+alias gl="git log --oneline --decorate --all --graph";
+
+# Use this if the clock keeps getting out of sync with the host
+alias fixtime="sudo date -s \"$(wget -qSO- --max-redirect=0 google.com 2>&1 | grep Date: | cut -d' ' -f5-8)Z\""
+
