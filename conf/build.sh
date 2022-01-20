@@ -98,3 +98,21 @@ cp /vagrant/conf/bash_aliases /home/vagrant/.bash_aliases
 ## Vagrant root bash aliases
 rm -rf /root/.bash_aliases && \
 cp /vagrant/conf/bash_aliases_root /root/.bash_aliases
+
+## Copy keys from conf/ssh to ~/.ssh
+cp /vagrant/conf/ssh/* /home/vagrant/.ssh
+chown -R vagrant:vagrant /home/vagrant/.ssh
+
+## Prepare git
+git config --global --unset user.name
+git config --global --unset user.email
+git config --global --unset user.signingkey
+git config --global user.useConfigOnly true
+git config --global alias.identity '! git config user.name "$(git config user.$1.name)"; git config user.email "$(git config user.$1.email)"; git config user.signingkey "$(git config user.$1.signingkey)"; :'
+
+echo "*** FINISHING GITHUB SETUP ***"
+echo "To finish setup, use the following (replacing the email address and GPG key). If you don't have a GPG key set up,"
+echo "see https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key"
+echo "git config --global user.github.name \"<your_full_name>\""
+echo "git config --global user.github.email \"<your_email_address>\""
+echo "git config --global user.github.signingkey <key>"

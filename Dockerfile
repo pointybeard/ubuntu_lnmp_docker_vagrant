@@ -45,7 +45,11 @@ RUN useradd -m -G sudo -s /bin/bash vagrant && \
 RUN mkdir -p /home/vagrant/.ssh; \
     chmod 700 /home/vagrant/.ssh
 ADD https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant.pub /home/vagrant/.ssh/authorized_keys
-RUN chmod 600 /home/vagrant/.ssh/authorized_keys; \
+RUN chmod 700 /home/vagrant/.ssh; \
+    chmod 600 /home/vagrant/.ssh/authorized_keys; \
+    touch /home/vagrant/.ssh/known_hosts; \
+    chmod 644 /home/vagrant/.ssh/known_hosts; \
+    chmod 644 /home/vagrant/.ssh/*.pub; \
     chown -R vagrant:vagrant /home/vagrant/.ssh
 
 # Run the init daemon
