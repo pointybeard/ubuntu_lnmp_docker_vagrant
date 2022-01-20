@@ -14,5 +14,6 @@ apt-get upgrade -yq
 ## /run/php is removed when vm is halted. Make sure its there otherwise php-fpm won't start
 mkdir -p /run/php
 
-## Start some services
-service php8.1-fpm start
+## (Re)Start some services
+service php8.1-fpm restart
+service nginx restart
