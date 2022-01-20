@@ -27,6 +27,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder "#{$homeDir}", "/vagrant", docker_consistency: "delegated"
 
   config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "forwarded_port", guest: 3306, host: 33306
 
   config.vm.provision :shell, path: confDir + "/build.sh"
   config.vm.provision :shell, path: confDir + "/boot.sh", run: 'always'
