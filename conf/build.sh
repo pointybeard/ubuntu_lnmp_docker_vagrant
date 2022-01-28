@@ -24,13 +24,16 @@ sysctl -w net.ipv4.icmp_echo_ignore_all=0
 apt-get remove --purge '^php*' -yq
 add-apt-repository -y ppa:ondrej/php
 apt-get update -yq
-apt-get install -yq php php-pear php-curl php-dev php-gd php-mbstring php-zip php-mysql php-xml php-json php-pcov php-xml php-intl
+apt-get install -yq php php-pear php-curl php-dev php-gd php-mbstring php-zip php-mysql php-xml php-json php-pcov php-xml php-intl php-fpm
 systemctl start php8.1-fpm.service && systemctl enable php8.1-fpm.service
+
+## PHP (7.4)
+apt-get install -y php7.4 php7.4-pear php7.4-curl php7.4-dev php7.4-gd php7.4-mbstring php7.4-zip php7.4-mysql php7.4-xml php7.4-json php7.4-pcov php7.4-fpm
 
 ## NGINX
 add-apt-repository -y ppa:ondrej/nginx
 apt-get update -yq
-apt-get install -yq python3-certbot-nginx nginx php-fpm ssl-cert
+apt-get install -yq python3-certbot-nginx nginx ssl-cert
 apt-get remove --purge '^apache2.*' -yq
 systemctl start nginx.service && systemctl enable nginx.service
 
