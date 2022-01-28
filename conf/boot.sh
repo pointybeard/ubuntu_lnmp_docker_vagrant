@@ -15,5 +15,9 @@ apt-get upgrade -yq
 mkdir -p /run/php
 
 ## (Re)Start some services
+service php7.4-fpm restart
 service php8.1-fpm restart
 service nginx restart
+
+## repopulate /etc/hosts
+cat /vagrant/conf/hosts >> /etc/hosts
